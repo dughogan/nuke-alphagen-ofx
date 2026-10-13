@@ -32,13 +32,20 @@ Cloud gives you the compute while you keep working in Nuke.**
 
 ## Install (Windows)
 
-1. Download the latest release zip and unzip it anywhere.
-2. Close Nuke and double-click **`install.bat`**.
+1. Download **[DUGco_AlphaGenSAM_0.1.0_win64.zip](https://github.com/dughogan/nuke-alphagen-ofx/releases/download/v0.1.0/DUGco_AlphaGenSAM_0.1.0_win64.zip)**
+   from [Releases](https://github.com/dughogan/nuke-alphagen-ofx/releases).
+   Not the green **Code** button: that's the source code, without the built plug-in.
+2. **Unzip it first** (right-click → *Extract All...*). Running `install.bat` from inside the
+   zip doesn't work.
+3. Close Nuke and double-click **`install.bat`** in the extracted folder.
    It copies the plug-in to `%LOCALAPPDATA%\DUGco\OFX` and tells Nuke where to find it
    (your user account only; no admin rights needed).
-3. Start Nuke. The node is in the **DUGco** menu, or press Tab and type `AlphaGenSAM`.
+4. Start Nuke. The node is in the **DUGco** menu, or press Tab and type `AlphaGenSAM`.
 
 To remove it, run `uninstall.bat`.
+
+Cloned the repository instead? Run `install\install.bat`: it offers to download the latest
+release and install that.
 
 ## Set up Comfy Cloud (the default)
 
