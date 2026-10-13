@@ -5,10 +5,11 @@ Part of the **DUGco OFX tool pack**.
 > **Beta (v0.1.0, Windows).** Download the ready-to-install zip from
 > [Releases](https://github.com/dughogan/nuke-alphagen-ofx/releases). Please report issues.
 
-[![Watch the demo: AI mattes in Nuke with AlphaGenSAM on Comfy Cloud (86 s)](docs/dugco_alphagensam_demo_poster.jpg)](docs/dugco_alphagensam_demo.mp4)
+https://github.com/user-attachments/assets/82008daa-31d7-46d2-810f-cc1a0f74b993
 
-▶ **[Watch the demo](docs/dugco_alphagensam_demo.mp4)** (86 s): selecting objects with SAM 3.1, pulling
-LTX-2.5 Alpha-Gen mattes on Comfy Cloud, and the premulted layers in the Nuke viewer.
+**The demo** (86 s): selecting objects with SAM 3.1, pulling LTX-2.5 Alpha-Gen mattes on Comfy
+Cloud, and the premulted layers in the Nuke viewer. Full-quality 1080p version:
+[download](https://github.com/dughogan/nuke-alphagen-ofx/raw/main/docs/dugco_alphagensam_demo.mp4).
 
 AlphaGenSAM is a Nuke node that pulls a clean, soft-edged matte for **one object** in a
 busy shot: the car, the actor, the building. You type what you want (or Ctrl+click it),
