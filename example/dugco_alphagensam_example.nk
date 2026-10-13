@@ -1,0 +1,351 @@
+#! C:/Program Files/Nuke17.0v2/nuke-17.0.2.dll -nx
+version 17.0 v2
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="-7" w="2560" h="1369" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="2516" stretch="1"/>
+            <splitter orientation="1">
+                <split size="1256"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                    <page id="uk.co.thefoundry.scripteditor.1"/>
+                </dock>
+                <split size="1256"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+            </splitter>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ frame 13
+ last_frame 121
+ format "1536 864 0 0 1536 864 1 DUGco_diner_1536"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x2a2f38ff
+ label "DUGco AlphaGenSAM example\n<font size=4>One node = one matte. Car and Diner are typed; Person is a Ctrl+click on the walking man. Press Process on each node (frames 1-25; set frame range to input range for the whole shot).</font>"
+ note_font_size 42
+ xpos -520
+ ypos 200
+ bdwidth 1240
+ bdheight 160
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x323a2fff
+ label "Alphas as layers"
+ note_font_size 24
+ xpos -100
+ ypos 380
+ bdwidth 330
+ bdheight 360
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x3a2f2fff
+ label "Cut-out previews"
+ note_font_size 24
+ xpos -520
+ ypos 800
+ bdwidth 1240
+ bdheight 260
+}
+Read {
+ inputs 0
+ file_type mov
+ file "\[file dirname \[value root.name]]/diner_plate.mp4"
+ last 121
+ origlast 121
+ origset true
+ name Diner_Plate
+ xpos 0
+}
+Dot {
+ name Dot1
+ xpos 34
+ ypos 140
+}
+set Nbcb6fa80 [stack 0]
+OFXcom.dugco.AlphaGenSAM_v1 {
+ show "selection preview"
+ select diner
+ points ""
+ autoPreview true
+ rangeMode custom
+ frameStart 1
+ frameEnd 25
+ status ""
+ Advanced 0
+ mode "clean plate (best)"
+ workRes 1920
+ chunk 121
+ blend 16
+ seed 42
+ colour "linear -> sRGB"
+ detThresh 0.5
+ others "person, car, animal"
+ reach 150
+ blackPt -0.04
+ whitePt 1.03
+ debug off
+ "ComfyUI Backend" 0
+ backend "Comfy Cloud"
+ cloudKey ""
+ serverUrl http://127.0.0.1:8000
+ samModel sam3.1_multiplex_fp16.safetensors
+ unetModel ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors
+ icLora ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors
+ textEnc gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors
+ videoVae ltx-2.5-video-vae-bf16.safetensors
+ audioVae ltx-2.5-audio-vae-bf16.safetensors
+ cacheDir "\[file dirname \[value root.name]]/dugco_cache"
+ session ""
+ anaStart 0
+ anaCount 0
+ cacheVersion 0
+ name AG_Diner
+ tile_color 0xd1495bff
+ label "matte: diner"
+ xpos 420
+ ypos 260
+}
+push $Nbcb6fa80
+OFXcom.dugco.AlphaGenSAM_v1 {
+ show "selection preview"
+ select ""
+ points "744.00 430.00 + 13 1;742.00 500.00 + 13 1"
+ autoPreview true
+ rangeMode custom
+ frameStart 1
+ frameEnd 25
+ status ""
+ Advanced 0
+ mode "clean plate (best)"
+ workRes 1920
+ chunk 121
+ blend 16
+ seed 42
+ colour "linear -> sRGB"
+ detThresh 0.5
+ others "person, car, animal"
+ reach 150
+ blackPt -0.04
+ whitePt 1.03
+ debug off
+ "ComfyUI Backend" 0
+ backend "Comfy Cloud"
+ cloudKey ""
+ serverUrl http://127.0.0.1:8000
+ samModel sam3.1_multiplex_fp16.safetensors
+ unetModel ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors
+ icLora ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors
+ textEnc gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors
+ videoVae ltx-2.5-video-vae-bf16.safetensors
+ audioVae ltx-2.5-audio-vae-bf16.safetensors
+ cacheDir "\[file dirname \[value root.name]]/dugco_cache"
+ session ""
+ anaStart 0
+ anaCount 0
+ cacheVersion 0
+ name AG_Person
+ tile_color 0xe8913aff
+ label "matte: person"
+ xpos 0
+ ypos 260
+}
+push $Nbcb6fa80
+OFXcom.dugco.AlphaGenSAM_v1 {
+ show "selection preview"
+ select car
+ points ""
+ autoPreview true
+ rangeMode custom
+ frameStart 1
+ frameEnd 25
+ status ""
+ Advanced 0
+ mode "clean plate (best)"
+ workRes 1920
+ chunk 121
+ blend 16
+ seed 42
+ colour "linear -> sRGB"
+ detThresh 0.5
+ others "person, car, animal"
+ reach 150
+ blackPt -0.04
+ whitePt 1.03
+ debug off
+ "ComfyUI Backend" 0
+ backend "Comfy Cloud"
+ cloudKey "saved (...b6df)"
+ serverUrl http://127.0.0.1:8000
+ samModel sam3.1_multiplex_fp16.safetensors
+ unetModel ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors
+ icLora ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors
+ textEnc gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors
+ videoVae ltx-2.5-video-vae-bf16.safetensors
+ audioVae ltx-2.5-audio-vae-bf16.safetensors
+ cacheDir "\[file dirname \[value root.name]]/dugco_cache"
+ session d9aa2f23fda32068
+ anaStart 0
+ anaCount 0
+ cacheVersion 0
+ name AG_Car
+ tile_color 0x3fb7c5ff
+ label "matte: car"
+ xpos -420
+ ypos 260
+}
+set Nac96d900 [stack 0]
+push $Nbcb6fa80
+add_layer {car car.a}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 car.a
+ name Copy_Car
+ xpos 0
+ ypos 420
+}
+add_layer {person person.a}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 person.a
+ name Copy_Person
+ xpos 0
+ ypos 510
+}
+add_layer {diner diner.a}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 diner.a
+ name Copy_Diner
+ xpos 0
+ ypos 600
+}
+Dot {
+ name Dot2
+ label "plate + car.a / person.a / diner.a"
+ note_font_size 20
+ xpos 34
+ ypos 720
+}
+set N83c2f600 [stack 0]
+push $N83c2f600
+Copy {
+ inputs 2
+ from0 car.a
+ to0 rgba.alpha
+ name Use_Car
+ xpos -420
+ ypos 840
+}
+Premult {
+ name Premult_Car
+ xpos -420
+ ypos 900
+}
+CheckerBoard2 {
+ inputs 0
+ boxsize 48
+ color0 0.022
+ color1 0
+ color2 0.024
+ color3 0
+ centerlinewidth 0
+ name Checker
+ xpos 700
+ ypos 820
+}
+set Nac96f700 [stack 0]
+Merge2 {
+ inputs 2
+ name Cutout_Car
+ label "Car cut-out"
+ xpos -420
+ ypos 980
+}
+push $N83c2f600
+push $N83c2f600
+Copy {
+ inputs 2
+ from0 person.a
+ to0 rgba.alpha
+ name Use_Person
+ xpos 0
+ ypos 840
+}
+Premult {
+ name Premult_Person
+ xpos 0
+ ypos 900
+}
+push $Nac96f700
+Merge2 {
+ inputs 2
+ name Cutout_Person
+ label "Person cut-out"
+ xpos 0
+ ypos 980
+}
+push $N83c2f600
+push $N83c2f600
+Copy {
+ inputs 2
+ from0 diner.a
+ to0 rgba.alpha
+ name Use_Diner
+ xpos 420
+ ypos 840
+}
+Premult {
+ name Premult_Diner
+ xpos 420
+ ypos 900
+}
+push $Nac96f700
+Merge2 {
+ inputs 2
+ name Cutout_Diner
+ label "Diner cut-out"
+ xpos 420
+ ypos 980
+}
+push $Nac96d900
+Viewer {
+ frame 13
+ frame_range 1-121
+ monitorOutNDISenderName "Nuke - dugco_alphagensam_example - Viewer1"
+ monitorOutOutputTransform rec709
+ name Viewer1
+ xpos -600
+ ypos 260
+}

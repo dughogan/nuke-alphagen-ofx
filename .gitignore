@@ -1,0 +1,36 @@
+# build output (releases go on GitHub Releases)
+build/
+staging/
+dist/
+*.obj
+*.exp
+*.lib
+*.pdb
+*.ilk
+
+# node caches / Nuke backups
+dugco_cache/
+*.nk~
+*.nk.autosave
+*.autosave
+
+# local-only material
+_shelved/
+demo/
+comfy_nodes/
+vendor/LTX-2/
+vendor/sam3/
+docs/two_pass_*
+docs/three_objects_frame13.jpg
+docs/promenade_three_people_f84.jpg
+
+# dev-only tools: the test bridge runs arbitrary Python inside Nuke; never ship it
+tools/nuke_test_server.py
+tools/nk.py
+tools/swap_on_close.ps1
+tools/gen_test_clip.py
+
+# never commit an API key
+comfy_cloud_api_key.txt
+*.key
+.env
