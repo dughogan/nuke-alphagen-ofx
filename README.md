@@ -2,6 +2,9 @@
 
 Part of the **DUGco OFX tool pack**.
 
+> **Beta (v0.1.0, Windows).** Download the ready-to-install zip from
+> [Releases](https://github.com/dughogan/nuke-alphagen-ofx/releases). Please report issues.
+
 AlphaGenSAM is a Nuke node that pulls a clean, soft-edged matte for **one object** in a
 busy shot: the car, the actor, the building. You type what you want (or Ctrl+click it),
 press **Process**, and the matte lands in the alpha channel, with hair, glass and motion
