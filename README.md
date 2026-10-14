@@ -1,4 +1,4 @@
-# DUGco AlphaGenSAM: AI mattes in Nuke, powered by ComfyUI
+# AlphaGenSAM: AI mattes in Nuke, powered by ComfyUI
 
 Part of the **DUGco OFX tool pack**.
 
